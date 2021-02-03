@@ -1,0 +1,20 @@
+{% extends '/shared/_base.html' %}
+
+{% block container %}
+<div class="alert alert-primary" role="alert">
+<h1>You are now logged as {{user}}!</h1>
+</div>
+<br>
+<h1>Search a book review:</h1>
+<br>
+<form class="search" method="POST">
+  <div class="form-group">
+    <label for="search">Please enter book infos here:</label>
+    <br>
+    <input type="text" name="search" class="form-control">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% endblock %}
+{% block result %}{% endblock%}

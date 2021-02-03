@@ -1,0 +1,78 @@
+{% extends '/shared/_base.html' %}
+{% block book %}
+{% set book = book %}
+{% set user = session["user"] %}
+{% set isbn = query[0] %}
+
+
+<br>
+<h1>{{ book }}</h1>
+<br>
+<ul class="list-group">
+  <li class="list-group-item">isbn:&nbsp; {{ query[0] }}</li>
+  <br>
+  <li class="list-group-item">author:&nbsp; {{ query[2] }}</li>
+  <br>
+  <li class="list-group-item">year:&nbsp; {{ query[3] }}</li>
+</ul>
+{% if res.average_rating or res.ratings_count %}
+<br>
+<h3 style="margin-top : 1.5vw;">From Goodreads:</h3>
+<ul class="list-group">
+  {% if res.average_rating %}
+  <li class="list-group-item">average rating:&nbsp; {{ res.average_rating }}</li>
+  {% endif %}
+  <br>
+  {% if res.ratings_count %}
+  <li class="list-group-item">rating count:&nbsp; {{ res.ratings_count }}</li>
+  {% endif %}
+</ul>
+{% endif %}
+{% if all_reviews %}
+<br>
+<h3 style="margin-top : 1.5vw;">Reviews submitted by users:</h3>
+<ul class="list-group">
+  {% for i in range(0, lenght) %}
+  {% set rev_username = (all_reviews[i])[0] %}
+  {% set review = (all_reviews[i])[1] %}
+  {% set rate = (all_reviews[i])[2] %}
+  <li class="list-group-item">user:&nbsp; {{ rev_username }}</li>
+  <br>
+  <li class="list-group-item">review:&nbsp; "{{ review }}"</li>
+  <br>
+  <li class="list-group-item">rate:&nbsp; {{ rate }}/5</li>
+  <div style="height: 2vw;"></div>
+
+  {% endfor %}
+</ul>
+{% endif %}
+
+<form class="review" action="{{url_for('book', user = user, book = book)}}" method="post">
+<h3 class="review_title">Submit a review:</h3>
+<textarea name='review' class="text_area" placeholder="Let your review here..."></textarea>
+<h3 class="review_title">Rate this book:</h3>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary">
+    <input type="radio" name="rate" id="option1" value="1"> 1
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="rate" id="option2" value="2"> 2
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="rate" id="option3" value="3"> 3
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="rate" id="option4" value="4"> 4
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="rate" id="option5" value="5"> 5
+  </label>
+</div>
+<br>
+<button id="submit_review" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+{% endblock %}

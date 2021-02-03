@@ -1,0 +1,40 @@
+{% extends '/shared/_base.html' %}
+
+{% block container %}
+    <br>
+    <h1 class="registerTitle">REGISTER</h1>
+    <br>
+    <form action="{{url_for('register')}}" class="register" method="POST">
+      <div class="form-group">
+        <label for="InputUsername">Username:</label>
+        <br>
+        <input type="text" name="username" class="form-control">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="InputEmail">Email:</label>
+        <br>
+        <input type="email" class="form-control" name="email">
+        <small id="SmallEmail" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="InputNewPassword">New password:</label>
+        <br>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="RepeatPassword">Repeat password:</label>
+        <br>
+        <input type="password" class="form-control" name="confirmation">
+      </div>
+      <br>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endblock %}

@@ -1,0 +1,55 @@
+body {
+  margin: 0 10% 0 10%;
+  background-color: Gainsboro;
+}
+
+.alert, .alert-danger, .alert-primary, .alert-success{
+  text-align: center;
+  margin-top: 7vw;
+}
+
+.nav, .nav-pills, .nav-fill{
+  font-size: 2vw;
+  background-color: Silver;
+}
+
+.form-group, .btn, .btn-primary{
+  font-size: 1.3vw;
+}
+
+.registerTitle, .loginTitle {
+  font-size: 1.8vw;
+}
+
+.imageBook {
+  width: 30%;
+  display: block;
+  margin: auto;
+}
+
+#logout{
+  height: 100%;
+  width: 100%;
+}
+
+.text_area{
+  width: 100%;
+  min-height: 5vw;
+}
+
+.review > h3{
+  margin-top: 1.5vw;
+}
+
+.review > .btn-group, .review > .btn-group-toggle{
+  width: 20%;
+}
+
+.review > button{
+  margin: 2vw 0 2vw 0;
+  width: 10%;
+}
+
+.review > textarea{
+  font-size: 1vw;
+}

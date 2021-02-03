@@ -1,0 +1,27 @@
+{% extends '/shared/_base.html' %}
+{% block container %}
+<div class="alert alert-primary" role="alert">
+<h1>You are now logged as {{user}}!</h1>
+</div>
+{% endblock %}
+{% block result %}
+<br>
+<br>
+<ul class="list-group">
+{% for i in range(0, length) %}
+{% set book = (result[i])[1] %}
+{% set user = session["user"] %}
+{% set isbn = (result[i])[0] %}
+{% set author = (result[i])[2] %}
+{% set year = (result[i])[3] %}
+  <li class="list-group-item"><h3><a name='title' href="{{url_for('book', book=book, user=user)}}">{{ book }}</a></h3>
+    <ul class="list-group">
+      <li class="list-group-item">isbn:&nbsp; {{ isbn }}</li>
+      <li class="list-group-item">author:&nbsp; {{ author }}</li>
+      <li class="list-group-item">year&nbsp;: {{ year }}</li>
+    </ul>
+  </li>
+  <div style="height: 2vw;"></div>
+{% endfor %}
+</ul>
+{% endblock %}
